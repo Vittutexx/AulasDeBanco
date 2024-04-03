@@ -1,8 +1,3 @@
----WHILE
---
-
----FOR
-
 
 DECLARE
     V_CONTADOR NUMBER(1):= 0;
@@ -30,7 +25,7 @@ END LOOP;
 END;
 
 
---- Montar um bloco de programaÁ„o que realize o processamento de uma tabuada qualquer, por exemplo a tabuada do numero 150.
+--- Montar um bloco de programa√ß√£o que realize o processamento de uma tabuada qualquer, por exemplo a tabuada do numero 150.
 
 DECLARE
     V_CONTAGEM NUMBER(3):= 0;
@@ -44,7 +39,7 @@ BEGIN
 
 END;
 
---- Em um intevalo numerico inteiro, informar quantos numeros s„o pares e quantos s„o impares.
+--- Em um intevalo numerico inteiro, informar quantos numeros s√£o pares e quantos s√£o impares.
 
 SET SERVEROUTPUT ON
 DECLARE
@@ -61,7 +56,7 @@ BEGIN
 END;
 
 
---- Exibir a mÈdia dos valores pares em um intervalo numÈrico e soma dos Ìmpares.
+--- Exibir a m√©dia dos valores pares em um intervalo num√©rico e soma dos √≠mpares.
 SET SERVEROUTPUT ON
 DECLARE
     V_CONTADOR NUMBER(3):= 0;
