@@ -1,19 +1,19 @@
 SET SERVEROUTPUT ON
 
---1. Crie um bloco anÙnimo que calcula o total de movimentaÁıes de estoque para um determinado produto.
+--1. Crie um bloco an√¥nimo que calcula o total de movimenta√ß√µes de estoque para um determinado produto.
 DECLARE
     CD_PRODUTO NUMBER(1):= &CODIGO_PRODUTO;
 BEGIN
 
     FOR X IN (SELECT * FROM movimento_estoque) LOOP
     IF (X.COD_PRODUTO = CD_PRODUTO) THEN
-    DBMS_OUTPUT.PUT_LINE('TOTAL DE MOVIMENTA«√O DE ESTOQUE DO PRODUTO: '|| X.QTD_MOVIMENTACAO_ESTOQUE);
+    DBMS_OUTPUT.PUT_LINE('TOTAL DE MOVIMENTA√á√ÉO DE ESTOQUE DO PRODUTO: '|| X.QTD_MOVIMENTACAO_ESTOQUE);
     END IF;
     END LOOP;
 
 END;
 
---2. Utilizando FOR crie um bloco anÙnimo que calcula a mÈdia de valores totais de pedidos para um cliente especÌfico.
+--2. Utilizando FOR crie um bloco an√¥nimo que calcula a m√©dia de valores totais de pedidos para um cliente espec√≠fico.
 SET SERVEROUTPUT ON
 DECLARE
 CD_CLIENTE NUMBER := &VALOR;
@@ -32,7 +32,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('MEDIA DE VALORES TOTAIS DOS PEDIDOS DO CLIENTE: ' || MEDIA);        
 END;
 
---3. Crie um bloco anÙnimo que exiba os produtos compostos ativos
+--3. Crie um bloco an√¥nimo que exiba os produtos compostos ativos
 SET SERVEROUTPUT ON
 BEGIN
     FOR X IN (SELECT COD_PRODUTO_RELACIONADO,
@@ -50,14 +50,14 @@ BEGIN
                         ' CODIGO DO PRODUTO: ' || X.COD_PRODUTO ||
                         ' QTD DO PRODUTO: ' || X.QTD_PRODUTO ||
                         ' QTD DO PRODUTO RELACIONADO: ' || X.QTD_PRODUTO_RELACIONADO ||
-                        ' SITUA«√O: '|| '(' || X.STA_ATIVO || ')' ||
+                        ' SITUA√á√ÉO: '|| '(' || X.STA_ATIVO || ')' ||
                         ' DATA DE CADASTRO: '|| '(' || X.DAT_CADASTRO || ')' || 
                         ' DATA DE CANCELAMENTO: '|| '(' || X.DAT_CANCELAMENTO || ')'); 
     END LOOP;
 END;
 
 
---4. Crie um bloco anÙnimo para calcular o total de movimentaÁıes de estoque para um determinado produto usando INNER JOIN com a tabela de tipo_movimento_estoque.
+--4. Crie um bloco an√¥nimo para calcular o total de movimenta√ß√µes de estoque para um determinado produto usando INNER JOIN com a tabela de tipo_movimento_estoque.
 SET SERVEROUTPUT ON
 DECLARE
 CD_PRODUTO NUMBER(3) := &CODIGO_DO_PRODUTO;
@@ -73,10 +73,10 @@ BEGIN
         TOTAL_MOV := TOTAL_MOV + 1;
         END IF;
     END LOOP;
-    DBMS_OUTPUT.PUT_LINE('TOTAL DE MOVIMENTA«’ES DE ESTOQUE DO PRODUTO: ' || TOTAL_MOV);
+    DBMS_OUTPUT.PUT_LINE('TOTAL DE MOVIMENTA√á√ïES DE ESTOQUE DO PRODUTO: ' || TOTAL_MOV);
 END;
 
---5. Crie um bloco anÙnimo para exibir os produtos compostos e, se houver, suas informaÁıes de estoque, usando LEFT JOIN com a tabela estoque_produto.
+--5. Crie um bloco an√¥nimo para exibir os produtos compostos e, se houver, suas informa√ß√µes de estoque, usando LEFT JOIN com a tabela estoque_produto.
 SET SERVEROUTPUT ON
 BEGIN
     FOR X IN(SELECT PC.COD_PRODUTO,
@@ -106,7 +106,8 @@ BEGIN
         END LOOP;
 END;
 
---6. Crie um bloco que exiba as informaÁıes de pedidos e, se houver, as informaÁıes dos clientes relacionados usando RIGHT JOIN com a tabela cliente.
+--6. Crie um bloco que exiba as informa√ß√µes de pedidos e, se houver, as informa√ß√µes dos clientes relacionados usando RIGHT JOIN com a tabela cliente.
+SET SERVEROUTPUT ON
 BEGIN
     FOR X IN(SELECT P.COD_PEDIDO,
                     P.COD_CLIENTE,
@@ -127,19 +128,19 @@ BEGIN
                     LOOP
                         DBMS_OUTPUT.PUT_LINE(
                           'CODIGO DO PEDIDO: ' || X.COD_PEDIDO
-                          || ' C”DIGO DO CLIENTE: ' || X.COD_CLIENTE
-                          || ' C”DIGO DO USU¡RIO: ' || X.COD_USUARIO
-                          || ' C”DIGO DO VENDEDOR: ' || X.COD_VENDEDOR
+                          || ' C√ìDIGO DO CLIENTE: ' || X.COD_CLIENTE
+                          || ' C√ìDIGO DO USU√ÅRIO: ' || X.COD_USUARIO
+                          || ' C√ìDIGO DO VENDEDOR: ' || X.COD_VENDEDOR
                           || ' DATA DO PEDIDO: ' || X.DAT_PEDIDO
                           || ' VALOR TOTAL DO PEDIDO: ' || X.VAL_TOTAL_PEDIDO
                           || ' VALOR TOTAL DO DESCONTO: ' || X.VAL_DESCONTO
                           || ' NOME DO CLIENTE RELACIONADO AO PEDIDO: ' || X.NOM_CLIENTE
-                          || ' NATUREZA JURÕDICA: ' || X.TIP_PESSOA
+                          || ' NATUREZA JUR√çDICA: ' || X.TIP_PESSOA
                           || ' NUMERO DO CNPJ OU CPF: ' || X.NUM_CPF_CNPJ);
     END LOOP;                      
 END;
 
---7. Crie um bloco que calcule a mÈdia de valores totais de pedidos para um cliente especÌfico e exibe as informaÁıes do cliente usando INNER JOIN com a tabela cliente.
+--7. Crie um bloco que calcule a m√©dia de valores totais de pedidos para um cliente espec√≠fico e exibe as informa√ß√µes do cliente usando INNER JOIN com a tabela cliente.
 SET SERVEROUTPUT ON
 DECLARE
 CD_CLIENTE NUMBER := &VALOR;
@@ -164,7 +165,7 @@ BEGIN
     END LOOP;
         MEDIA := (TOTAL_ESTOQUE / QTD_ITEM);
     DBMS_OUTPUT.PUT_LINE('NOME DO CLIENTE: ' || NOME_CLIENTE);
-    DBMS_OUTPUT.PUT_LINE('C”DIGO DO CLIENTE: ' || CD_CLIENTE);    
+    DBMS_OUTPUT.PUT_LINE('C√ìDIGO DO CLIENTE: ' || CD_CLIENTE);    
     DBMS_OUTPUT.PUT_LINE('MEDIA DE VALORES TOTAIS DOS PEDIDOS DO CLIENTE: ' || MEDIA);
 
 END;
