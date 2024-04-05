@@ -1,0 +1,22 @@
+CREATE TABLE TABELA_PROCEDURES(ID_PROCEDURE NUMBER,
+                    NOME_PROCEDURE VARCHAR2(30),
+                    DATA_CRIACAO DATE,
+                    CREATED_USER VARCHAR(30));
+
+
+CREATE SEQUENCE SQ_PROCEDURE;
+        
+
+    
+INSERT INTO TABELA_PROCEDURES VALUES (
+        SQ_PROCEDURE.NEXTVAL,
+        'PRIMEIRA PROCEDURE',
+        SYSDATE,
+        'VERGS'
+);
+    
+    
+    
+    
+COMMIT;
+    
