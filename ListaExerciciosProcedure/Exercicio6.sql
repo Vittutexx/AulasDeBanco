@@ -1,4 +1,4 @@
----6. Crie um procedimento em PL/SQL denominado "ListarMovimentosEstoqueProduto" que recebe o código de um produto como 
+---6. Crie um procedimento em PL/SQL denominado "ListarMovimentosEstoqueProduto" que recebe o cÃ³digo de um produto como 
 --argumento e lista todos os movimentos de estoque associados a esse produto, incluindo detalhes como a data do movimento e o tipo de movimento.
 SET SERVEROUTPUT ON
 
@@ -11,15 +11,18 @@ BEGIN
         RAISE EXCP;
     END IF;
     
-    FOR X IN(SELECT * FROM MOVIMENTO_ESTOQUE WHERE COD_PRODUTO = VCOD_PROD) LOOP
+    FOR X IN(SELECT 
+    TME.DES_TIPO_MOVIMENTO_ESTOQUE,
+    ME.DAT_MOVIMENTO_ESTOQUE,
+    ME.COD_TIPO_MOVIMENTO_ESTOQUE
+    FROM MOVIMENTO_ESTOQUE ME 
+    INNER JOIN TIPO_MOVIMENTO_ESTOQUE TME ON ( ME.COD_TIPO_MOVIMENTO_ESTOQUE = TME.COD_TIPO_MOVIMENTO_ESTOQUE )
+    WHERE ME.COD_PRODUTO = VCOD_PROD) LOOP
     DBMS_OUTPUT.PUT_LINE(    
-                             ' SEQUENCIA DE MOVIMENTO DO ESTOQUE: ' || X.SEQ_MOVIMENTO_ESTOQUE || CHR(10) ||
-                             ' CODIGO DO PRODUTO: ' || X.COD_PRODUTO|| CHR(10) ||
                              ' DATA DE MOVIMENTO DO ESTOQUE: ' || X.DAT_MOVIMENTO_ESTOQUE || CHR(10) ||
-                             ' QUANTIDADE DE MOVIMENTAÇÕES DO ESTOQUE: ' || X.QTD_MOVIMENTACAO_ESTOQUE || CHR(10) ||
-                             ' CODIGO DO TIPO DE MOVIMENTO DO ESTOQUE: ' || X.COD_TIPO_MOVIMENTO_ESTOQUE || CHR(10));
+                             ' TIPO DO MOVIMENTO DE ESTOQUE: ' || X.DES_TIPO_MOVIMENTO_ESTOQUE || CHR(10));
     END LOOP;
-        EXCEPTION
+    EXCEPTION
         WHEN EXCP THEN
-            RAISE_APPLICATION_ERROR(-20022, 'O limite de números para o código deve ser de até 10 e não deve conter caracteres');
+            RAISE_APPLICATION_ERROR(-20022, 'O limite de nÃºmeros para o cÃ³digo deve ser de atÃ© 10 e nÃ£o deve conter caracteres');
 END;
