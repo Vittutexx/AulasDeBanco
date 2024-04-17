@@ -1,4 +1,4 @@
----2 ñ Crie uma procedure para inserir novos clientes, todos os valores dever„o ser informados por par‚metros e devera ter tratamento de exceÁ„o.
+---2 ‚Äì Crie uma procedure para inserir novos clientes, todos os valores dever√£o ser informados por par√¢metros e devera ter tratamento de exce√ß√£o.
 CREATE OR REPLACE PROCEDURE INSERIR_CL(
 VCOD_CLIENTE
 CLIENTE.COD_CLIENTE%TYPE,
@@ -81,19 +81,19 @@ BEGIN
 
     EXCEPTION
         WHEN EXE1 THEN
-        RAISE_APPLICATION_ERROR(-20010, 'Necess·rio que o nome do cliente tenha mais de trÍs numeros e n„o devem ser n˙meros');
+        RAISE_APPLICATION_ERROR(-20010, 'Necess√°rio que o nome do cliente tenha mais de tr√™s caracteres e n√£o devem conter n√∫meros');
         WHEN EXE2 THEN
-        RAISE_APPLICATION_ERROR(-20011, 'O cÛdigo do cliente deve conter mais de dez numeros e n„o deve ter caractere inserido');
+        RAISE_APPLICATION_ERROR(-20011, 'O c√≥digo do cliente deve conter mais de dez numeros e n√£o deve ter caractere inserido');
         WHEN EXE3 THEN
-        RAISE_APPLICATION_ERROR(-20012, 'Necess·rio que a raz„o social tenha menos de 80 caracteres n„o numericos ou devem conter valor NULL');
+        RAISE_APPLICATION_ERROR(-20012, 'Necess√°rio que a raz√£o social tenha menos de 80 caracteres n√£o numericos ou devem conter valor NULL');
         WHEN EXE4 THEN
-        RAISE_APPLICATION_ERROR(-20013, 'O o tipo de pessoa deve ser ||F|| ou ||J||. E n„o deve ser numÈrico.');
+        RAISE_APPLICATION_ERROR(-20013, 'O o tipo de pessoa deve ser ||F|| ou ||J||. E n√£o deve ser num√©rico.');
         WHEN EXE5 THEN
-        RAISE_APPLICATION_ERROR(-20014, 'O CPF/CNPJ precisam ser inseridos apenas com numeros e n„o deve conter caracteres especiais, como ||.|| e ||-||.');
+        RAISE_APPLICATION_ERROR(-20014, 'O CPF/CNPJ precisam ser inseridos apenas com numeros e n√£o deve conter caracteres especiais, como ||.|| e ||-||.');
         WHEN EXE6 THEN
-        RAISE_APPLICATION_ERROR(-20015, 'Deve inserir a data da seguinte forma: DD/MM/YYYY. E deve conter apenas n˙meros');
+        RAISE_APPLICATION_ERROR(-20015, 'Deve inserir a data da seguinte forma: DD/MM/YYYY. E deve conter apenas n√∫meros');
         WHEN EXE7 THEN
-        RAISE_APPLICATION_ERROR(-20016, 'Deve inserir a data da seguinte forma: DD/MM/YYYY. E deve conter apenas n˙meros ou seja valor NULL');
+        RAISE_APPLICATION_ERROR(-20016, 'Deve inserir a data da seguinte forma: DD/MM/YYYY. E deve conter apenas n√∫meros ou seja valor NULL');
         WHEN EXE8 THEN
         RAISE_APPLICATION_ERROR(-20017, 'Deve conter appenas caracteres, sendo ele ||I|| OU ||A||.');
     END INSERIR_CL;
